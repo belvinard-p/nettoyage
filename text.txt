@@ -1,0 +1,9 @@
+USE mysql;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'belvi';
+FLUSH PRIVILEGES;
+EXIT;
+
+
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = 'belvi'; 
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
