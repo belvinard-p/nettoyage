@@ -1,0 +1,17 @@
+feat(IB1-8): Implement secure MFA Backup Code regeneration endpoint
+
+This commit introduces the necessary logic and controller endpoint for securely regenerating Multi-Factor Authentication (MFA) backup codes. This change is fully integrated with the user's password validation process to ensure high security.
+
+### New Endpoint (API Route)
+
+1.  **POST /api/v1/auth/backup-codes/regenerate: Allows the authenticated user to regenerate backup codes after confirming their password. This operation:
+    * Invalidates all previous codes.
+    * Generates a new set of codes.
+    * Is protected by **@Transactional** to guarantee data integrity (all-or-nothing operation).
+
+### Technical & Quality Fixes
+
+* **Refactoring:** Ensured service operations adhere to the transactional block pattern (as requested by the reviewer).
+* **Style:** Corrected the alphabetical sorting of constants in `AppRoute.java`.
+* **Security:** Used `SecurityContext` for retrieving the user's ID securely, removing reliance on external parameters.
+* **Cleanup:** Removed extraneous Swagger annotations.
